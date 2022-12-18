@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var show = false
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("View more")
+                .bold()
+                .foregroundColor(.white)
         }
-        .padding()
+        .frame(width: show ? 320 : 300, height: show ? 600 : 44)
+        .background(Color.blue)
+        .cornerRadius(30)
+        .shadow(color: Color.blue.opacity(0.5), radius: 20)
+        .onTapGesture {
+            withAnimation(.spring()) {
+                show.toggle()
+            }
+        }
     }
 }
 
